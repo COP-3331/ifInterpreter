@@ -5,6 +5,8 @@ This header file defines the ElseIfCommand class.
 */
 
 #include <string>
+#include <vector>
+#include <sstream>
 #include "part.h"
 
 using namespace std;
@@ -33,7 +35,9 @@ class ElseIfCommand : public Part
     public:
         ElseIfCommand(string inputText)
         {
-            //TODO: seperate inputText into variable and value
+            vector<string> tokens = splitOnSpace(inputText);
+            variable = tokens[1];
+            value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
         }
         
 };
@@ -46,7 +50,10 @@ class GoToCommand : public Part
     public:
         GoToCommand(string inputText)
         {
-            target = inputText;
+            int d1 = inputText.find("&quot;")+6;
+            int d2 = inputText.find("&quot;", d1+1);
+
+            target = inputText.substr(d1, d2-d1);
         }
         
 };
@@ -60,7 +67,9 @@ class IfCommand : public Part
     public:
         IfCommand(string inputText)
         {
-            //TODO: seperate inputText into variable and value
+            vector<string> tokens = splitOnSpace(inputText);
+            variable = tokens[1];
+            value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
         }
 };
 
@@ -73,7 +82,9 @@ class SetCommand : public Part
     public:
         SetCommand(string inputText)
         {
-            //TODO: seperate inputText into variable and value
+            vector<string> tokens = splitOnSpace(inputText);
+            variable = tokens[1];
+            value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
         }
 };
 
