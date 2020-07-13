@@ -13,11 +13,7 @@ This header file defines the IFInterpreter class.
 #include "storytokenizer.h"
 #include "passage.h"
 #include "link.h"
-#include "setcommand.h"
-#include "ifcommand.h"
-#include "elseifcommand.h"
-#include "elsecommand.h"
-#include "gotocommand.h"
+#include "commands.h"
 #include "plaintext.h"
 
 using namespace std;
