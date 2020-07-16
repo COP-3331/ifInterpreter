@@ -1,14 +1,14 @@
 /*
 Alexander Dagama
 U67010156
-This source file implements the functions of the IFInterpreter class.
+This source file implements the functions of the Story class.
 */
 
-#include "ifinterpreter.h"
+#include "story.h"
 
 using namespace std;
 
-IFInterpreter::IFInterpreter(string fileName)
+Story::Story(string fileName)
 {
     this->fileName = fileName;
 
@@ -92,7 +92,7 @@ IFInterpreter::IFInterpreter(string fileName)
     }
 }
 
-void IFInterpreter::print()
+void Story::print()
 {
     for(unsigned int i = 0; i < passages.size(); i++)
         passages.at(i)->print();

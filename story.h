@@ -1,7 +1,7 @@
 /*
 Alexander Dagama
 U67010156
-This header file defines the IFInterpreter class.
+This header file defines the Story class.
 */
 
 #include <string>
@@ -19,10 +19,10 @@ This header file defines the IFInterpreter class.
 
 using namespace std;
 
-#ifndef IFINTERPRETER
-#define IFINTERPRETER
+#ifndef STORY
+#define STORY
 
-class IFInterpreter
+class Story
 {
     private:
         string fileName;
@@ -31,7 +31,7 @@ class IFInterpreter
         unordered_map<string, bool> variableMap;
         
     public:
-        IFInterpreter(string fileName);
+        Story(string fileName);
         void print();
 };
 

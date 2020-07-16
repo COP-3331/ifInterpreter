@@ -23,7 +23,7 @@ SetCommand::SetCommand(string inputText)
 
 void SetCommand::print()
 {
-    cout << "Set: variable=" << variable << ", value=" << (value ? "true":"false") <<endl;
+    cout << "Set: var=" << variable << ", value=" << (value ? "true":"false") <<endl;
 }
 
 IfCommand::IfCommand(string inputText)
@@ -35,7 +35,7 @@ IfCommand::IfCommand(string inputText)
 
 void IfCommand::print()
 {
-    cout << "If: variable=" << variable << ", value=" << (value ? "true":"false") << endl;
+    cout << "If: var=" << variable << ", value=" << (value ? "true":"false") << endl;
 }
 
 ElseIfCommand::ElseIfCommand(string inputText)
@@ -47,7 +47,7 @@ ElseIfCommand::ElseIfCommand(string inputText)
 
 void ElseIfCommand::print()
 {
-    cout << "Else-if: variable=" << variable << ", value=" << value << endl;
+    cout << "Else-if: var=" << variable << ", value=" << value << endl;
 }
 
 void ElseCommand::print()
