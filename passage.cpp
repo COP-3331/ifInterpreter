@@ -16,8 +16,8 @@ Passage::Passage(string name)
 
 void Passage::print()
 {
-    cout << "Passage: " << name << endl;
-    for (int i = 0; i < parts.size(); i++)
+    cout << "Passage " << name << ":" << endl;
+    for (unsigned int i = 0; i < parts.size(); i++)
         parts.at(i)->print();
 }
 

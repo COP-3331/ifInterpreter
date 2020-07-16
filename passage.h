@@ -17,6 +17,7 @@ class Passage
 {
     private:
         string name;
+    protected:    
         vector<Part*> parts;
     public:
         Passage(string name);

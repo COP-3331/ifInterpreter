@@ -35,7 +35,6 @@ IFInterpreter::IFInterpreter(string fileName)
     StoryTokenizer st(story);
 
     //Iterate through all of the passages in the story
-    int pass = 0;
     while (st.hasNextPassage())
     {
         //Use the PassageToken to construct a PassageTokenizer
@@ -74,7 +73,7 @@ IFInterpreter::IFInterpreter(string fileName)
                     partPointer = new ElseCommand();
                     break;
                 case BLOCK:
-                    //TODO: Implement Block
+                    partPointer = new Block(stok.getText());
                     break;
                 case TEXT:
                     partPointer = new PlainText(stok.getText());
@@ -95,6 +94,6 @@ IFInterpreter::IFInterpreter(string fileName)
 
 void IFInterpreter::print()
 {
-    for(int i = 0; i < passages.size(); i++)
+    for(unsigned int i = 0; i < passages.size(); i++)
         passages.at(i)->print();
 }

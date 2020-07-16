@@ -17,10 +17,8 @@ class PlainText : public Part
     private:
         string text;
     public:
-        PlainText(string inputText)
-        {
-            text = inputText;
-        }
+        PlainText(string inputText);
+        void print();
         
 };
 

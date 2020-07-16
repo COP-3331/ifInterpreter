@@ -15,6 +15,7 @@ This header file defines the IFInterpreter class.
 #include "link.h"
 #include "commands.h"
 #include "plaintext.h"
+#include "block.h"
 
 using namespace std;
 

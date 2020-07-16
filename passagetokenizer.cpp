@@ -55,7 +55,7 @@ PassageTokenizer::PassageTokenizer(string inputText)
             {
                 type = BLOCK;
                 int blockDepth = 1;
-                int i;
+                unsigned int i;
                 for (i = b1+1; i < inputText.length(); i++)
                 {
                     if (inputText.at(i) == '[') blockDepth++;

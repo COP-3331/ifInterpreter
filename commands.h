@@ -16,13 +16,8 @@ using namespace std;
 
 class ElseCommand : public Part
 {
-    private:
-
     public:
-        ElseCommand()
-        {
-            
-        }
+    void print();
         
 };
 
@@ -33,12 +28,8 @@ class ElseIfCommand : public Part
         bool value;
 
     public:
-        ElseIfCommand(string inputText)
-        {
-            vector<string> tokens = splitOnSpace(inputText);
-            variable = tokens[1];
-            value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
-        }
+        ElseIfCommand(string inputText);
+        void print();
         
 };
 
@@ -48,13 +39,8 @@ class GoToCommand : public Part
         string target;
 
     public:
-        GoToCommand(string inputText)
-        {
-            int d1 = inputText.find("&quot;")+6;
-            int d2 = inputText.find("&quot;", d1+1);
-
-            target = inputText.substr(d1, d2-d1);
-        }
+        GoToCommand(string inputText);
+        void print();
         
 };
 
@@ -65,12 +51,8 @@ class IfCommand : public Part
         bool value;
 
     public:
-        IfCommand(string inputText)
-        {
-            vector<string> tokens = splitOnSpace(inputText);
-            variable = tokens[1];
-            value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
-        }
+        IfCommand(string inputText);
+        void print();
 };
 
 class SetCommand : public Part
@@ -80,12 +62,8 @@ class SetCommand : public Part
         bool value;
 
     public:
-        SetCommand(string inputText)
-        {
-            vector<string> tokens = splitOnSpace(inputText);
-            variable = tokens[1];
-            value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
-        }
+        SetCommand(string inputText);
+        void print();
 };
 
 #endif
