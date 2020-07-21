@@ -48,7 +48,7 @@ PassageTokenizer::PassageTokenizer(string inputText)
         {
             if (inputText.at(b1+1) == '[')
             {
-                type = LINK2;
+                type = LINK;
                 endDelim = inputText.find("]]", startDelim)+1;
             }
             else

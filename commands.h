@@ -4,21 +4,23 @@ U67010156
 This header file defines the ElseIfCommand class.
 */
 
-#include <string>
-#include <vector>
-#include <sstream>
-#include "part.h"
-
 using namespace std;
 
 #ifndef COMMANDS
 #define COMMANDS
 
+#include <string>
+#include <vector>
+#include <sstream>
+#include "part.h"
+#include "story.h"
+
 class ElseCommand : public Part
 {
     public:
-    void print();
-        
+        ElseCommand();
+        void print();
+        string play(Story* storyRef, Passage* passageRef);
 };
 
 class ElseIfCommand : public Part
@@ -30,6 +32,7 @@ class ElseIfCommand : public Part
     public:
         ElseIfCommand(string inputText);
         void print();
+        string play(Story* storyRef, Passage* passageRef);
         
 };
 
@@ -41,7 +44,7 @@ class GoToCommand : public Part
     public:
         GoToCommand(string inputText);
         void print();
-        
+        string play(Story* storyRef, Passage* passageRef);
 };
 
 class IfCommand : public Part
@@ -53,6 +56,7 @@ class IfCommand : public Part
     public:
         IfCommand(string inputText);
         void print();
+        string play(Story* storyRef, Passage* passageRef);
 };
 
 class SetCommand : public Part
@@ -64,6 +68,7 @@ class SetCommand : public Part
     public:
         SetCommand(string inputText);
         void print();
+        string play(Story* storyRef, Passage* passageRef);
 };
 
 #endif

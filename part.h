@@ -4,25 +4,29 @@ U67010156
 This header file defines the Part class.
 */
 
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <vector>
-
 using namespace std;
 
 #ifndef PART
 #define PART
 
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+class Passage;
+class Story;
+
 class Part
 {
-    private:
-
+    protected:
+        string type;
     public:
-    virtual void print(){};
-    void play();
-    vector<string> splitOnSpace(string inputText);
-    bool stringToBool(string inputText);
+        virtual void print(){};
+        virtual string play(Story* storyRef, Passage* passageRef){};
+        vector<string> splitOnSpace(string inputText);
+        bool stringToBool(string inputText);
 };
 
 #endif

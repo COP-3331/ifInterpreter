@@ -4,6 +4,11 @@ U67010156
 This header file defines the Story class.
 */
 
+using namespace std;
+
+#ifndef STORY__
+#define STORY__
+
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -17,11 +22,6 @@ This header file defines the Story class.
 #include "plaintext.h"
 #include "block.h"
 
-using namespace std;
-
-#ifndef STORY
-#define STORY
-
 class Story
 {
     private:
@@ -33,6 +33,8 @@ class Story
     public:
         Story(string fileName);
         void print();
+        void play();
+        void setVariable(string variable, bool value);
 };
 
 #endif

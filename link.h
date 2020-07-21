@@ -4,13 +4,13 @@ U67010156
 This header file defines the Link class.
 */
 
-#include <string>
-#include "part.h"
-
 using namespace std;
 
-#ifndef LINK
-#define LINK
+#ifndef LINK__
+#define LINK__
+
+#include <string>
+#include "part.h"
 
 class Link : public Part
 {
@@ -21,6 +21,9 @@ class Link : public Part
     public:
         Link(string inputText);
         void print();
+        string play(Story* storyRef, Passage* passageRef);
+        string getDisplay() { return display; }
+        string getTarget() { return target; }
 };
 
 #endif

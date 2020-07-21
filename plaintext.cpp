@@ -11,3 +11,9 @@ void PlainText::print()
 {
     cout << "Text: \"" << text << "\"" << endl;
 }
+
+string PlainText::play(Story* storyRef, Passage* passageRef)
+{
+    cout << text;
+    return "";
+}

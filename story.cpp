@@ -54,7 +54,7 @@ Story::Story(string fileName)
 
             switch (stok.getType())
             {
-                case LINK2:
+                case LINK:
                     partPointer = new Link(stok.getText());
                     break;
                 case SET:
@@ -92,8 +92,29 @@ Story::Story(string fileName)
     }
 }
 
+//prints all the passages
 void Story::print()
 {
     for(unsigned int i = 0; i < passages.size(); i++)
         passages.at(i)->print();
+}
+
+//plays the story
+void Story::play()
+{
+    //play the first passage
+    string nextPassageName = passages.at(0)->play(this);
+
+    //play the next passage until there is no next passage
+    do
+    {
+        Passage* nextPassage = passageMap[nextPassageName];
+        nextPassageName = nextPassage->play(this);
+    } while (nextPassageName != "");
+}
+
+//used by the part object to set a variable
+void Story::setVariable(string variable, bool value)
+{
+    variableMap[variable] = value;
 }
