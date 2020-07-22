@@ -1,5 +1,6 @@
 #include <iostream>
 #include "link.h"
+#include "passage.h"
 using namespace std;
 
 Link::Link(string inputText)
@@ -7,6 +8,7 @@ Link::Link(string inputText)
     //remove outside brackets
     inputText = inputText.substr(2, inputText.length()-4);
     int d1 = inputText.find("-&gt;");
+
     //check if link has different display name
     if (d1 == -1)
     {
@@ -20,6 +22,15 @@ Link::Link(string inputText)
     }
 }
 
-void Link::print(){
+void Link::print()
+{
     cout << "Link: display=" << display << ", target=" << target << endl;
+}
+
+//adds link to passage and prints the display name
+string Link::play(Story* storyRef, Passage* passageRef)
+{
+    passageRef->addLinkPointer(this);
+    cout << display;
+    return "";
 }

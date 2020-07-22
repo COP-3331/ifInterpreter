@@ -16,7 +16,7 @@ Block::Block(string inputText):Passage(inputText)
         Part* partPointer;
         switch (stok.getType())
         {
-            case LINK2:
+            case LINK:
                 partPointer = new Link(stok.getText());
                 break;
             case SET:
@@ -55,4 +55,10 @@ void Block::print()
         (parts.at(i))->print();
     }
     cout << "END BLOCK" << endl;
+}
+
+string Block::play(Story* storyRef, Passage* passageRef)
+{
+    //TODO
+    return "";
 }

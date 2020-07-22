@@ -11,7 +11,7 @@ using namespace std;
 #ifndef PART_TOKEN
 #define PART_TOKEN
 
-enum partType {LINK2, SET, GOTO, IF, ELSEIF, ELSE, BLOCK, TEXT};
+enum partType {LINK, SET, GOTO, IF, ELSEIF, ELSE, BLOCK, TEXT};
 
 class PartToken
 {

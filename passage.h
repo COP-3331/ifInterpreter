@@ -4,26 +4,32 @@ U67010156
 This header file defines the Passage class.
 */
 
-#include <string>
-#include <vector>
-#include "part.h"
-
 using namespace std;
 
 #ifndef PASSAGE
 #define PASSAGE
 
+#include <string>
+#include <vector>
+#include "part.h"
+#include <unordered_map>
+#include <typeinfo>
+#include "link.h"
+
 class Passage
 {
     private:
         string name;
+        vector<Link*> links;
     protected:    
         vector<Part*> parts;
     public:
         Passage(string name);
+        friend class Part;
         void print();
-        void play();
+        string play(Story* storyRef);
         void addPartPointer(Part* partPointer);
+        void addLinkPointer(Link* linkPointer);
 };
 
 #endif

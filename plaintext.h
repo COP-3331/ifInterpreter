@@ -4,13 +4,13 @@ U67010156
 This header file defines the PlainText class.
 */
 
-#include <string>
-#include "part.h"
-
 using namespace std;
 
 #ifndef PLAINTEXT
 #define PLAINTEXT
+
+#include <string>
+#include "part.h"
 
 class PlainText : public Part
 {
@@ -19,7 +19,7 @@ class PlainText : public Part
     public:
         PlainText(string inputText);
         void print();
-        
+        string play(Story* storyRef, Passage* passageRef);
 };
 
 #endif
