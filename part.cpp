@@ -19,3 +19,8 @@ bool Part::stringToBool(string inputText)
     else cout << "error parsing in stringToBool()" << endl;
     return false;
 }
+
+string Part::getType()
+{
+    return type;
+}

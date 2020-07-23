@@ -5,6 +5,7 @@ using namespace std;
 
 Link::Link(string inputText)
 {
+    type = "link";
     //remove outside brackets
     inputText = inputText.substr(2, inputText.length()-4);
     int d1 = inputText.find("-&gt;");

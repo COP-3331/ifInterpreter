@@ -4,6 +4,7 @@ using namespace std;
 
 PlainText::PlainText(string inputText)
 {
+    type = "text";
     text = inputText;
 }
 

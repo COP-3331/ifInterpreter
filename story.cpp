@@ -118,3 +118,8 @@ void Story::setVariable(string variable, bool value)
 {
     variableMap[variable] = value;
 }
+
+bool Story::getVariable(string variable)
+{
+    return variableMap[variable];
+}

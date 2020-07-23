@@ -4,6 +4,7 @@ using namespace std;
 
 GoToCommand::GoToCommand(string inputText)
 {
+    type = "goto";
     int d1 = inputText.find("&quot;")+6;
     int d2 = inputText.find("&quot;", d1+1);
     target = inputText.substr(d1, d2-d1);
@@ -22,6 +23,7 @@ string GoToCommand::play(Story* storyRef, Passage* passageRef)
 
 SetCommand::SetCommand(string inputText)
 {
+    type = "set";
     vector<string> tokens = splitOnSpace(inputText);
     variable = tokens[1];
     value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
@@ -41,6 +43,7 @@ string SetCommand::play(Story* storyRef, Passage* passageRef)
 
 IfCommand::IfCommand(string inputText)
 {
+    type = "if";
     vector<string> tokens = splitOnSpace(inputText);
     variable = tokens[1];
     value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
@@ -53,12 +56,13 @@ void IfCommand::print()
 
 string IfCommand::play(Story* storyRef, Passage* passageRef)
 {
-    //TODO
-    return "";
+    string result = to_string(storyRef->getVariable(variable));
+    return result;
 }
 
 ElseIfCommand::ElseIfCommand(string inputText)
 {
+    type = "else-if";
     vector<string> tokens = splitOnSpace(inputText);
     variable = tokens[1];
     value = stringToBool(tokens[3].substr(0, tokens[3].length()-1));
@@ -71,13 +75,14 @@ void ElseIfCommand::print()
 
 string ElseIfCommand::play(Story* storyRef, Passage* passageRef)
 {
-    //TODO
-    return "";
+    
+    string result = to_string(storyRef->getVariable(variable));
+    return result;
 }
 
 ElseCommand::ElseCommand()
 {
-
+    type="else";
 }
 
 void ElseCommand::print()
@@ -87,6 +92,5 @@ void ElseCommand::print()
 
 string ElseCommand::play(Story* storyRef, Passage* passageRef)
 {
-    //TODO
     return "";
 }

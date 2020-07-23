@@ -24,9 +24,10 @@ class Part
         string type;
     public:
         virtual void print(){};
-        virtual string play(Story* storyRef, Passage* passageRef){};
+        virtual string play(Story* storyRef, Passage* passageRef){return "";};
         vector<string> splitOnSpace(string inputText);
         bool stringToBool(string inputText);
+        string getType();
 };
 
 #endif

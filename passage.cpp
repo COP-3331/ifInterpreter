@@ -24,13 +24,29 @@ void Passage::print()
 //Plays a passage, returns the name of the next Passage
 string Passage::play(Story* storyRef)
 {
+    bool enterBlock = false;
+    bool evalElse = false;
     //call all the part's play functions
     for (unsigned int i = 0; i < parts.size(); i++)
     {
-        string goToName = parts.at(i)->play(storyRef, this);
+        string result = "";
+        if (parts.at(i)->getType() != "block")
+            result = parts.at(i)->play(storyRef, this);
+        else if (parts.at(i)->getType() == "block" && enterBlock)
+        {
+            result = parts.at(i)->play(storyRef, this);
+            enterBlock = false;
+            evalElse = false;
+        }
 
         //if a GOTO command is found, stop the passage and return the target
-        if (goToName != "") return goToName;
+        if (parts.at(i)->getType() == "goto" && result != "") return result;
+        else if (parts.at(i)->getType() == "if" && result == "1") enterBlock = true;
+        else if (parts.at(i)->getType() == "if" && result == "0") evalElse = true;
+        else if (parts.at(i)->getType() == "else-if" && result == "1") enterBlock = true;
+        else if (parts.at(i)->getType() == "else-if" && result == "0") evalElse = true;
+        else if (parts.at(i)->getType() == "else" && evalElse) enterBlock = true;
+        
     }
 
     //if no more links, return empty string to end program
@@ -42,7 +58,7 @@ string Passage::play(Story* storyRef)
         cout << i+1 << ". " << links.at(i)->getDisplay() << endl;
     
     int chosenLink;
-    cout << endl << "Enter a link number: ";
+    cout << endl << "Enter the number of your decision: ";
     cin >> chosenLink;
     cout << endl;
 

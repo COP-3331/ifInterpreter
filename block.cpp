@@ -8,6 +8,7 @@ using namespace std;
 
 Block::Block(string inputText):Passage(inputText)
 {
+    type = "block";
     inputText = inputText.substr(1,inputText.size()-2);
     PassageTokenizer tokenizer(inputText);
     while(tokenizer.hasNextPart())
@@ -59,6 +60,5 @@ void Block::print()
 
 string Block::play(Story* storyRef, Passage* passageRef)
 {
-    //TODO
-    return "";
+    return Passage::play(storyRef);
 }

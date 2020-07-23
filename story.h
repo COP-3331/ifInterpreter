@@ -35,6 +35,7 @@ class Story
         void print();
         void play();
         void setVariable(string variable, bool value);
+        bool getVariable(string variable);
 };
 
 #endif
