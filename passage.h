@@ -20,9 +20,9 @@ class Passage
 {
     private:
         string name;
-        vector<Link*> links;
     protected:    
         vector<Part*> parts;
+        vector<Link*> links;
     public:
         Passage(string name);
         friend class Part;

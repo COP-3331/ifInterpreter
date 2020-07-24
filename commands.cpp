@@ -56,8 +56,8 @@ void IfCommand::print()
 
 string IfCommand::play(Story* storyRef, Passage* passageRef)
 {
-    string result = to_string(storyRef->getVariable(variable));
-    return result;
+    bool variableBool = storyRef->getVariable(variable);
+    return (variableBool == value ? "1" : "0");
 }
 
 ElseIfCommand::ElseIfCommand(string inputText)
@@ -76,8 +76,8 @@ void ElseIfCommand::print()
 string ElseIfCommand::play(Story* storyRef, Passage* passageRef)
 {
     
-    string result = to_string(storyRef->getVariable(variable));
-    return result;
+    bool variableBool = storyRef->getVariable(variable);
+    return (variableBool == value ? "1" : "0");
 }
 
 ElseCommand::ElseCommand()
