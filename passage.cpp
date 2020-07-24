@@ -25,7 +25,8 @@ void Passage::print()
 string Passage::play(Story* storyRef)
 {
     bool enterBlock = false;
-    bool evalElse = false;
+    bool doElseIfElse = false;
+
     //call all the part's play functions
     for (unsigned int i = 0; i < parts.size(); i++)
     {
@@ -36,16 +37,34 @@ string Passage::play(Story* storyRef)
         {
             result = parts.at(i)->play(storyRef, this);
             enterBlock = false;
-            evalElse = false;
         }
 
         //if a GOTO command is found, stop the passage and return the target
         if (parts.at(i)->getType() == "goto" && result != "") return result;
-        else if (parts.at(i)->getType() == "if" && result == "1") enterBlock = true;
-        else if (parts.at(i)->getType() == "if" && result == "0") evalElse = true;
-        else if (parts.at(i)->getType() == "else-if" && result == "1") enterBlock = true;
-        else if (parts.at(i)->getType() == "else-if" && result == "0") evalElse = true;
-        else if (parts.at(i)->getType() == "else" && evalElse) enterBlock = true;
+
+        //If-elseIf-Else logic
+        else if (parts.at(i)->getType() == "if" && result == "1") 
+        {
+            enterBlock = true;
+            doElseIfElse = false;
+        }
+        else if (parts.at(i)->getType() == "if" && result == "0")
+        {
+            doElseIfElse = true;
+        }
+        else if (parts.at(i)->getType() == "else-if" && result == "1" && doElseIfElse)
+        {
+            enterBlock = true;
+            doElseIfElse = false;
+        }
+        else if (parts.at(i)->getType() == "else-if" && result == "0" && doElseIfElse)
+        {
+            doElseIfElse = true;
+        }
+        else if (parts.at(i)->getType() == "else" && doElseIfElse)
+        {
+            enterBlock = true;
+        }
         
     }
 
@@ -62,8 +81,10 @@ string Passage::play(Story* storyRef)
     cin >> chosenLink;
     cout << endl;
 
-    //return the chosen passage name
-    return links.at(chosenLink-1)->getTarget();
+    //return the chosen passage name, and reset links.
+    string chosenPassage = links.at(chosenLink-1)->getTarget();
+    links.clear();
+    return chosenPassage;
 }
 
 void Passage::addPartPointer(Part* partPointer)
